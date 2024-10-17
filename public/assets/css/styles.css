@@ -1,0 +1,202 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden; /* Ocultar cualquier scroll horizontal */
+}
+
+#chat-container {
+    background-color: rgba(240, 244, 248, 0.9);
+    width: 60%;
+    max-width: 800px; /* Máximo ancho del contenedor */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #007BFF;
+    height: 80vh; /* Altura ajustada al viewport */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Evita cualquier overflow en el contenedor */
+}
+
+#chat {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* Solo scroll vertical */
+    overflow-x: hidden; /* Asegura que no haya scroll horizontal */
+    padding: 25px;
+    border-radius: 10px;
+    background-image: url('/assets/images/fondo-chat.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1; /* Deja que el chat ocupe todo el espacio disponible */
+    box-sizing: border-box; /* Asegura que padding no cause desbordamiento */
+}
+
+.message {
+    display: flex;
+    max-width: 65%; /* Ajusta los mensajes al 70% del contenedor */
+    align-items: flex-start;
+    gap: 10px;
+    word-wrap: break-word; /* Asegura que las palabras largas se dividan */
+    position: relative;
+}
+
+.message .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007BFF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.message .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message .message-text {
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    font-size: 14px;
+    display: inline-block;
+    max-width: 100%; /* Se asegura que el texto no se desborde */
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.message-status {
+    position: absolute;
+    bottom: 5px;
+    right: -20px;
+    font-size: 16px;
+}
+
+.message-status.sent {
+    color: black;
+}
+
+.message-status.received {
+    color: black;
+}
+
+.message-status.read {
+    color: green;
+}
+
+.message.sent {
+    align-self: flex-end;
+    max-width: 60%; /* Ajusta el ancho máximo del mensaje enviado */
+}
+
+.message.sent .message-text {
+    background-color: rgba(0, 123, 255, 0.8); /* Fondo azul */
+    color: white;
+    position: relative; /* Para que la flecha se coloque correctamente */
+    border-radius: 10px 10px 0 10px; /* Bordes ajustados */
+    margin-right: 15px; /* Un poco más de margen a la derecha */
+}
+
+.message.sent .message-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px; /* Ajusta el espacio para la flecha */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid rgba(0, 123, 255, 0.8); /* Color de la flecha */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.message.received {
+    align-self: flex-start;
+    max-width: 60%; /* Ajusta el ancho máximo del mensaje recibido */
+}
+
+.message.received .message-text {
+    background-color: rgba(240, 244, 248, 0.8);
+    color: #333;
+    position: relative; /* Para la flecha */
+    border-radius: 10px 10px 10px 0; /* Bordes ajustados */
+    margin-left: 15px; /* Ajuste del margen a la izquierda */
+}
+
+.message.received .message-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px; /* Ajusta el espacio para la flecha */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-right: 10px solid rgba(240, 244, 248, 0.8); /* Color de la flecha */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+#message-container {
+    display: flex;
+    margin-top: 10px;
+    padding: 10px;
+    border-top: 2px solid #ccc;
+    box-sizing: border-box; /* Evita desbordamiento causado por el padding */
+}
+
+#message {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#send {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#send:hover {
+    background-color: #0056b3;
+}
+
+#emoji-picker {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.emoji {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#send i {
+    font-size: 18px;
+}
